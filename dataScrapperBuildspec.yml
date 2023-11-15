@@ -7,3 +7,6 @@ phases:
 
 artifacts:
   files: '**/*'
+
+source:
+  location: backend/scrapper
