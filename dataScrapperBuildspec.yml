@@ -2,11 +2,18 @@ version: 0.2
 
 phases:
   install:
+    runtime-version:
+      nodejs: 16
     commands:
       - npm install
 
-artifacts:
-  files: '**/*'
+  post_build:
+    commands:
+      # Package the code into a ZIP file
+      - zip -r mylambdafunction.zip .
+
+      # AWS CLI command to invoke the Lambda function with the ZIP file as payload
+      - aws lambda invoke --function-name storeNews --payload fileb://mylambdafunction.zip
 
 source:
   location: backend/scrapper
