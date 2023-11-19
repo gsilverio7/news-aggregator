@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.451.0",
-    "aws-sdk": "^2.1496.0",
     "axios": "^1.5.1",
     "cheerio": "^1.0.0-rc.12",
     "puppeteer": "^21.3.8"
