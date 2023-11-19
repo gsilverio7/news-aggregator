@@ -10,17 +10,8 @@ phases:
 
   post_build:
     commands:
-      # Create a temporary directory to stage the files
-      - mkdir staging
-
-      # Copy only the relevant files to the staging directory
-      - cp -r backend/scrapper/* staging/
-
       # Package the code into a ZIP file
-      - zip -r mylambdafunction.zip staging
+      - zip -r mylambdafunction.zip backend/scrapper/
 
-      # AWS CLI command to invoke the Lambda function with the ZIP file as payload
+      # AWS CLI command to update the Lambda function code with the ZIP file
       - aws lambda update-function-code --function-name storeNews --zip-file fileb://mylambdafunction.zip
-    
-      # Clean up
-      - rm -rf staging
