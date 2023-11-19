@@ -13,7 +13,7 @@ phases:
       - zip -r mylambdafunction.zip .
 
       # AWS CLI command to invoke the Lambda function with the ZIP file as payload
-      - aws lambda invoke --function-name storeNews --payload fileb://mylambdafunction.zip
+      - aws lambda update-function-code --function-name storeNews --zip-file fileb://mylambdafunction.zip
 
 source:
   location: backend/scrapper
