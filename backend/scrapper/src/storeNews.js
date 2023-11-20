@@ -34,13 +34,10 @@ async function storeNews(news) {
     try {
         const batchWriteCommand = new BatchWriteItemCommand(params);
         await dynamoDBClient.send(batchWriteCommand);
-        console.log('sucesso');
-        return { statusCode: 200, body: 'Success inserting items' };
+        console.log('success');
     } catch (error) {
-        console.log(error);
-        return { statusCode: 500, body: 'Error inserting items: ' . error };
+        console.log('error trying to store news: ' + error);
     }
-    
 };
 
 module.exports = {

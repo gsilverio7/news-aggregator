@@ -7,8 +7,10 @@ const scrapeAndStoreNews = async () => {
         data.forEach(websiteNews => {
             storeNews(websiteNews);
         });
+        return { statusCode: 200, body: 'Success inserting items' };
     } catch (error) {
         console.error('Error: ', error);
+        return { statusCode: 500, body: 'Error inserting items: ' + error };
     };
 }
 
