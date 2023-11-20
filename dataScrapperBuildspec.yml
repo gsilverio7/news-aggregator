@@ -9,9 +9,7 @@ phases:
       - npm install
 
   post_build:
-    commands:
-      - cd backend/scrapper
-      
+    commands:     
       # Package the code into a ZIP file
       - zip -r mylambdafunction.zip .
 
