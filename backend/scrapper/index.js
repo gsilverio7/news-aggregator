@@ -6,6 +6,7 @@ const scrapeAndStoreNews = async () => {
         const data = await newsScrapper();
         data.forEach(websiteNews => {
             storeNews(websiteNews);
+            //console.log(websiteNews);
         });
         return { statusCode: 200, body: 'Success inserting items' };
     } catch (error) {
@@ -17,3 +18,6 @@ const scrapeAndStoreNews = async () => {
 exports.handler = async () => {
     await scrapeAndStoreNews();
 }
+
+
+scrapeAndStoreNews();
