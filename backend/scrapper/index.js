@@ -20,4 +20,4 @@ exports.handler = async () => {
 }
 
 
-scrapeAndStoreNews();
+//scrapeAndStoreNews();
