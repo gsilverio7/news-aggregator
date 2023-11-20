@@ -6,7 +6,7 @@ phases:
       nodejs: 16
     commands:
       - cd backend/scrapper
-      - npm install
+      - npm install --production
 
   post_build:
     commands:     
