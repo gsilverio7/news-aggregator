@@ -4,10 +4,10 @@ const { storeNews } = require('./src/storeNews.js');
 const scrapeAndStoreNews = async () => {
     try {
         const data = await newsScrapper();
-        data.forEach(websiteNews => {
-            storeNews(websiteNews);
-            //console.log(websiteNews);
-        });
+        for (const websiteNews of data) {
+            await storeNews(websiteNews);
+            //console.log(websiteNews)
+        }
         return { statusCode: 200, body: 'Success inserting items' };
     } catch (error) {
         console.error('Error: ', error);
@@ -15,9 +15,6 @@ const scrapeAndStoreNews = async () => {
     };
 }
 
-exports.handler = async () => {
-    await scrapeAndStoreNews();
-}
-
+exports.handler = scrapeAndStoreNews;
 
 //scrapeAndStoreNews();
