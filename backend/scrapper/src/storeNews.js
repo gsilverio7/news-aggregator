@@ -12,7 +12,7 @@ const dynamoDBClient = new DynamoDBClient({
 });
 
 // Your DynamoDB table name
-const tableName = process.env.AWS_DYNAMODB_TABLE_NAME || 'table';
+const tableName = process.env.AWS_DYNAMODB_TABLE_NAME || 'news';
 
 async function storeNews(news) {
     const params = {
