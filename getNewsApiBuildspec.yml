@@ -13,4 +13,4 @@ phases:
       - zip -r mylambdafunction.zip .
 
       # AWS CLI command to update the Lambda function code with the ZIP file
-      - aws lambda update-function-code --function-name getNewsApi --zip-file fileb://mylambdafunction.zip --debug
+      - aws lambda update-function-code --function-name getNews --zip-file fileb://mylambdafunction.zip --debug
