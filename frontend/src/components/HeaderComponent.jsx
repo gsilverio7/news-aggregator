@@ -31,19 +31,19 @@ export default function HeaderComponent() {
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                 >
-                    Home
+                    Início
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                 >
-                    Categories
+                    Política
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                 >
-                    About
+                    Economia
                 </a>
             </nav>
         </header>

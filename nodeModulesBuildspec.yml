@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-version:
+      nodejs: 16
+    commands:
+      - cd backend
+      - npm install --production
+
+  post_build:
+    commands:     
+      # Package the code into a ZIP file
+      - zip -r nodemodules.zip node_modules
+
+      # AWS CLI command to update the Lambda function code with the ZIP file
+      - aws lambda update-function-code --function-name NewsAggregatorNodeModules --zip-file fileb://nodemodules.zip --debug

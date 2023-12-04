@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-version:
+      nodejs: 16
+
+  post_build:
+    commands:           
+      - cd backend/api
+
+      # Package the code into a ZIP file
+      - zip -r mylambdafunction.zip .
+
+      # AWS CLI command to update the Lambda function code with the ZIP file
+      - aws lambda update-function-code --function-name getNewsApi --zip-file fileb://mylambdafunction.zip --debug
