@@ -4,11 +4,12 @@ phases:
   install:
     runtime-version:
       nodejs: 16
+    commands:
+      - cd backend/api
+      - npm install --production
 
   post_build:
-    commands:           
-      - cd backend/api
-
+    commands:
       # Package the code into a ZIP file
       - zip -r mylambdafunction.zip .
 

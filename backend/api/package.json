@@ -9,11 +9,11 @@
       "style": "prettier --write src/**/*.js test/**/*.js"
     },
     "dependencies": {
-      "@aws-sdk/client-dynamodb": "^3.451.0"
+      "@aws-sdk/client-dynamodb": "^3.451.0",
+      "dotenv": "^16.3.1"
     },
     "devDependencies": {
       "@aws-sdk/credential-providers": "^3.451.0",
-      "dotenv": "^16.3.1",
       "jest": "^29.7.0",
       "prettier": "^3.0.3"
     }
