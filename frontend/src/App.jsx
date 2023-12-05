@@ -15,21 +15,40 @@ function App() {
 
     const [news, setNews] = useState({});
 
+    const getNews = async () => {
+        const data = await fetch('https://ljc5bhe8lc.execute-api.us-west-2.amazonaws.com/alpha')
+            .then(response => {return response.json()});
+        
+        //console.log(data);
+
+        if (data.statusCode === 200) {
+            let g1News = data.body.filter(item => item.website.S === 'G1');
+            //g1News = g1News.sort((a, b) => a.scrape_date.S - b.scrape_date.S);
+            let cnnNews = data.body.filter(item => item.website.S === 'CNN');
+            let igNews = data.body.filter(item => item.website.S === 'IG');
+
+            setNews({g1: g1News, cnn: cnnNews, ig: igNews});
+
+            //console.log(g1News[0].link.S);
+            //console.log(cnnNews);
+            //console.log(igNews);
+        }
+
+
+
+
+        //return data;
+    }
+
     useEffect(() => {
+        /*
         const databaseNews = {
-            // id, title, url, website, subject, data_busca
             g1: [
                 {
                     title: 'Titulo da Noticia',
                     url: 'http://google.com',
                     subject: 'politica',
                     data_busca: '16/10/2023'
-                },
-                {
-                    title: 'Noticia lorem ipsum',
-                    url: 'http://google.com',
-                    subject: 'brasil',
-                    data_busca: '06/10/2023'
                 }
             ],
             cnn: [
@@ -49,8 +68,10 @@ function App() {
                 }
             ]
         };
+        */
 
-        setNews(databaseNews);
+        getNews();
+        //setNews(databaseNews);
     }, []);
 
     return (
