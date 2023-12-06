@@ -4,8 +4,9 @@ export default function HeaderComponent({filterFunction, showAll}) {
     return (
         <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <a
-                className="flex items-center gap-2 font-semibold text-xl text-gray-800 dark:text-gray-200"
+                className="flex items-center gap-2 font-semibold text-xl text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                 href="#"
+                onClick={() => {showAll()}}
             >
                 <svg
                     className=" w-8 h-8"

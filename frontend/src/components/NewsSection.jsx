@@ -1,9 +1,8 @@
 import React from 'react';
 
 export default function NewsSection({logoSrc, news, middle = false}) {
-    console.log(news);
     return (
-        <div className={"w-full sm:w-1/3 p-4 bg-white dark:bg-gray-900" + (middle ? " sm:border-l sm:border-r sm:border-gray-200 sm:dark:border-gray-700" : "")}>
+        <div className={"w-full h-max sm:w-1/3 p-4 bg-white dark:bg-gray-900" + (middle ? " sm:border-l sm:border-r sm:border-gray-200 sm:dark:border-gray-700" : "")}>
             <h2 className="font-semibold text-lg mb-4 text-gray-800 dark:text-gray-200">
                 <img src={logoSrc} className="h-16 mb-5" alt="iG" />
             </h2>

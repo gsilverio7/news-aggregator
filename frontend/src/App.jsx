@@ -20,14 +20,13 @@ function App() {
         let data;
 
         const cachedData = localStorage.getItem('News');
-        const cachedDataDate = localStorage.getItem('NewsDate');
+        const cachedDataDate = new Date(localStorage.getItem('NewsDate'));
 
         const currentDateAtSeven = new Date();
         currentDateAtSeven.setHours(7, 5, 0, 0);
 
-        if (cachedData && cachedDataDate >= currentDateAtSeven) {
+        if (cachedData && (cachedDataDate >= currentDateAtSeven)) {
             data = JSON.parse(cachedData);
-
         } else {
             data = await fetch('https://i772hkx1rk.execute-api.us-east-1.amazonaws.com/alpha')
                 .then(response => {return response.json()});
