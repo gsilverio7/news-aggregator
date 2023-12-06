@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function HeaderComponent() {
+export default function HeaderComponent({filterFunction, showAll}) {
     return (
         <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <a
@@ -30,18 +30,21 @@ export default function HeaderComponent() {
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
+                    onClick={() => {showAll()}}
                 >
                     Início
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
+                    onClick={() => {filterFunction('politica')}}
                 >
                     Política
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
+                    onClick={() => {filterFunction('economia')}}
                 >
                     Economia
                 </a>

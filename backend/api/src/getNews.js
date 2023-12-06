@@ -17,7 +17,9 @@ const tableName = process.env.AWS_DYNAMODB_TABLE_NAME || 'news';
 async function getNews () {
     try {
         const params = {
-            TableName: tableName
+            TableName: tableName,            
+            IndexName: 'scrape_date',
+            ScanIndexForward: false
         };  
 
         const scanCommand = new ScanCommand(params);

@@ -14,69 +14,65 @@ import NewsSection from './components/NewsSection';
 function App() {
 
     const [news, setNews] = useState({});
+    const [allNews, setAllNews] = useState({});
 
     const getNews = async () => {
-        const data = await fetch('https://ljc5bhe8lc.execute-api.us-west-2.amazonaws.com/alpha')
-            .then(response => {return response.json()});
+        let data;
+        const cachedData = localStorage.getItem('newsAggregatorNews');
+
+        if (cachedData) {
+            data = JSON.parse(cachedData);
+        } else {
+            data = await fetch('https://i772hkx1rk.execute-api.us-east-1.amazonaws.com/alpha')
+                .then(response => {return response.json()});
         
-        //console.log(data);
-
-        if (data.statusCode === 200) {
-            let g1News = data.body.filter(item => item.website.S === 'G1');
-            //g1News = g1News.sort((a, b) => a.scrape_date.S - b.scrape_date.S);
-            let cnnNews = data.body.filter(item => item.website.S === 'CNN');
-            let igNews = data.body.filter(item => item.website.S === 'IG');
-
-            setNews({g1: g1News, cnn: cnnNews, ig: igNews});
-
-            //console.log(g1News[0].link.S);
-            //console.log(cnnNews);
-            //console.log(igNews);
+            if (data.statusCode === 200) {
+                localStorage.setItem('newsAggregatorNews', JSON.stringify(data));
+            } else {
+                return;
+            }
         }
+        
+        let g1News = data.body.filter(item => item.website.S === 'G1');
+        g1News = g1News.sort(sortNewsArray);
 
+        let cnnNews = data.body.filter(item => item.website.S === 'CNN');
+        cnnNews = cnnNews.sort(sortNewsArray);
 
+        let igNews = data.body.filter(item => item.website.S === 'IG');
+        igNews = igNews.sort(sortNewsArray);
 
+        const updatedNews = {g1: g1News, cnn: cnnNews, ig: igNews};
+        setAllNews(updatedNews);     
+        setNews(updatedNews);   
+    }
 
-        //return data;
+    const filterBySubject = (subject) => {
+        let g1News = allNews.g1.filter(item => item.subject.S === subject);
+        let cnnNews = allNews.cnn.filter(item => item.subject.S === subject);
+        let igNews = allNews.ig.filter(item => item.subject.S === subject);
+
+        setNews({g1: g1News, cnn: cnnNews, ig: igNews});        
+    }
+
+    const showAllNews = () => {
+        setNews(allNews);
+    }
+
+    const sortNewsArray = (a, b) => {
+        const dateA = new Date(a.scrape_date.S);
+        const dateB = new Date(b.scrape_date.S);
+    
+        return dateB - dateA;
     }
 
     useEffect(() => {
-        /*
-        const databaseNews = {
-            g1: [
-                {
-                    title: 'Titulo da Noticia',
-                    url: 'http://google.com',
-                    subject: 'politica',
-                    data_busca: '16/10/2023'
-                }
-            ],
-            cnn: [
-                {
-                    title: 'Titulo da Noticia',
-                    url: 'http://google.com',
-                    subject: 'politica',
-                    data_busca: '16/10/2023'
-                }
-            ],
-            ig: [
-                {
-                    title: 'Titulo da Noticia',
-                    url: 'http://google.com',
-                    subject: 'politica',
-                    data_busca: '16/10/2023'
-                }
-            ]
-        };
-        */
-
         getNews();
-        //setNews(databaseNews);
     }, []);
 
     return (
         <div className="flex flex-col h-screen bg-white dark:bg-gray-900">
-            <HeaderComponent />
+            <HeaderComponent filterFunction={filterBySubject} showAll={showAllNews}/>
             <main className="flex flex-col sm:flex-row flex-grow overflow-auto bg-white dark:bg-gray-900">
                 <NewsSection logoSrc={ G1Logo } news={ news.g1 || [] } />
                 <NewsSection logoSrc={ CnnLogo } news={ news.cnn || [] } middle={ true } />
