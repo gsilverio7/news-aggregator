@@ -1,12 +1,12 @@
-import React from 'react';
-
-export default function HeaderComponent({filterFunction, showAll}) {
+export default function HeaderComponent({ filterFunction, showAll }) {
     return (
         <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <a
                 className="flex items-center gap-2 font-semibold text-xl text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                 href="#"
-                onClick={() => {showAll()}}
+                onClick={() => {
+                    showAll();
+                }}
             >
                 <svg
                     className=" w-8 h-8"
@@ -31,21 +31,27 @@ export default function HeaderComponent({filterFunction, showAll}) {
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
-                    onClick={() => {showAll()}}
+                    onClick={() => {
+                        showAll();
+                    }}
                 >
                     Início
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
-                    onClick={() => {filterFunction('politica')}}
+                    onClick={() => {
+                        filterFunction('politica');
+                    }}
                 >
                     Política
                 </a>
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
-                    onClick={() => {filterFunction('economia')}}
+                    onClick={() => {
+                        filterFunction('economia');
+                    }}
                 >
                     Economia
                 </a>

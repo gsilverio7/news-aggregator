@@ -22,15 +22,12 @@ async function getNews () {
 
         const scanCommand = new ScanCommand(params);
         const data = await dynamoDBClient.send(scanCommand);
-        const orderedData = orderData(data.Items);
+        const sortedData = sortData(data.Items);
 
         console.log('success');
         return { 
             statusCode: 200, 
-            body: data.Items, 
-            headers: {
-                'ETag': `"${orderedData[0].scrape_date.S}"`,
-            }, 
+            body: sortedData 
         };
     } catch (error) {
         console.log('error trying to get news: ' + error);
@@ -38,7 +35,7 @@ async function getNews () {
     }
 }
 
-function orderData(items) {
+function sortData(items) {
     const sortedItems = items.sort((a, b) => {
         const aDate = new Date(a.scrape_date.S);
         const bDate = new Date(b.scrape_date.S);
