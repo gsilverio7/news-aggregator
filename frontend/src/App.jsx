@@ -22,10 +22,8 @@ function App() {
         const cachedAPIResponseDate = new Date(localStorage.getItem('NewsDate'));
 
         if (cachedAPIResponse && (cachedAPIResponseDate.getTime() < new Date().getTime())) {
-            console.log('cache');
             data = JSON.parse(cachedAPIResponse);
         } else {
-            console.log('api');
             data = await fetch(
                 'https://yl0slgfdti.execute-api.us-west-2.amazonaws.com/production'
             ).then((response) => {
