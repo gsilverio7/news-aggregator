@@ -20,7 +20,7 @@ export default function NewsSection({ logoSrc, news, middle = false }) {
                         <div className="mb-2">
                             <a
                                 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
-                                href={article.link.S}
+                                href={article.link.S} target="_blank"
                             >
                                 {article.title.S}
                             </a>

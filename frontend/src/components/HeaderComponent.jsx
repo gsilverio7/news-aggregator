@@ -29,6 +29,7 @@ export default function HeaderComponent({ filterFunction, showAll }) {
             </a>
             <nav className="flex gap-4">
                 <a
+                    id="inicioBtn"
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                     onClick={() => {
@@ -38,6 +39,7 @@ export default function HeaderComponent({ filterFunction, showAll }) {
                     Início
                 </a>
                 <a
+                    id="politicaBtn"
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                     onClick={() => {
@@ -47,6 +49,7 @@ export default function HeaderComponent({ filterFunction, showAll }) {
                     Política
                 </a>
                 <a
+                    id="economiaBtn"
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
                     href="#"
                     onClick={() => {
