@@ -54,10 +54,12 @@ async function performScraping(website, subject) {
     const scrapedData = await page.evaluate((website) => {
         const data = [];
         document.querySelectorAll(website.newsDiv).forEach((el) => {
+            const now = new Date();
             data.push({
                 link: el.querySelector(website.newsLink).getAttribute('href'),
                 title: el.querySelector(website.newsTitle).textContent,
-                scrape_date: new Date().toISOString(),
+                scrape_date: now.toISOString(),
+                expire_date: Math.floor(now.getTime() / 1000) + (7 * 24 * 60 * 60)
             });
         });
         return data;

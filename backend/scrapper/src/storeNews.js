@@ -30,6 +30,7 @@ async function storeNews(news) {
                     title: { S: item.title },
                     website: { S: news.website },
                     scrape_date: { S: item.scrape_date },
+                    expire_date: { N: `${item.expire_date}` }
                 },
             },
         });
