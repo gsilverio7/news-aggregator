@@ -17,11 +17,11 @@ function App() {
 
     const getNews = async () => {
         let data;
-
         const cachedAPIResponse = localStorage.getItem('News');
-        const cachedAPIResponseDate = new Date(localStorage.getItem('NewsDate'));
+        const cachedAPIResponseDate = new Date(localStorage.getItem('NewsExpiryDate'));
+        const now = new Date();
 
-        if (cachedAPIResponse && (cachedAPIResponseDate.getTime() < new Date().getTime())) {
+        if (cachedAPIResponse && (cachedAPIResponseDate >= now)) {
             data = JSON.parse(cachedAPIResponse);
         } else {
             data = await fetch(
@@ -30,11 +30,20 @@ function App() {
                 return response.json();
             });
 
-            if (data.statusCode === 200) {
-                localStorage.setItem('News', JSON.stringify(data));
-                localStorage.setItem('NewsDate', new Date().toString());
-            } else {
+            if (data.statusCode !== 200) {
                 return;
+            }
+
+            localStorage.setItem('News', JSON.stringify(data));
+
+            if (now.getHours() <= 7 && now.getMinutes() <= 5) {
+                now.setHours(7, 5, 0, 0);
+                localStorage.setItem('NewsExpiryDate', now.toString());
+            } else {
+                now.setDate(now.getDate() + 1);
+                now.setHours(7, 5, 0, 0);
+                console.log(now);
+                localStorage.setItem('NewsExpiryDate', now.toString());
             }
         }
 
@@ -52,12 +61,22 @@ function App() {
         let cnnNews = allNews.cnn.filter((item) => item.subject.S === subject);
         let igNews = allNews.ig.filter((item) => item.subject.S === subject);
 
+        showActiveSection(subject);
         setNews({ g1: g1News, cnn: cnnNews, ig: igNews });
     };
 
     const showAllNews = () => {
+        showActiveSection('inicio');
         setNews(allNews);
     };
+
+    const showActiveSection = (section) => {
+        const navLinks = document.querySelector('nav').getElementsByTagName('a');
+        for (const navLink of navLinks) {
+            navLink.style.opacity = '1';
+        }
+        document.getElementById(section + 'Btn').style.opacity = '0.5';
+    }
 
     useEffect(() => {
         getNews();
