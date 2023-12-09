@@ -45,10 +45,10 @@ async function performScraping(website, subject) {
     );
 
     // Navigate to the target web page
-    await page.goto(website.url + subject + '/', { timeout: 60000 });
+    await page.goto(website.url + subject + '/', { timeout: 90000 });
 
     // Wait for the content to load. You might need to adjust the selector and timeout.
-    await page.waitForSelector(website.newsDiv, { timeout: 6000 });
+    await page.waitForSelector(website.newsDiv, { timeout: 9000 });
 
     // Extract the data you need
     const scrapedData = await page.evaluate((website) => {
