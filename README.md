@@ -25,7 +25,7 @@ App que agrega notícias de diferentes websites. Utiliza web scrapping e foi pen
 
 ## Arquitetura da aplicação
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App_Architecture](https://github.com/gsilverio7/news-aggregator/blob/main/imgs/aws-na.jpg)
 
 <!--
 ## Rodando localmente
@@ -75,5 +75,5 @@ Abra uma nova aba do terminal. Entre no diretório backend do projeto
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/gsilverio7/news-aggregator/blob/main/imgs/screenshot.png)
 
