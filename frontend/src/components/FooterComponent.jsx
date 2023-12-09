@@ -4,7 +4,7 @@ export default function FooterComponent() {
             <div className="space-x-4">
                 <a
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
-                    href="#"
+                    href="https://github.com/gsilverio7/news-aggregator" target="_blank"
                 >
                     <svg
                         fill="currentColor"
