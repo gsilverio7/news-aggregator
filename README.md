@@ -62,7 +62,7 @@ Abra uma nova aba do terminal. Entre no diretório backend do projeto
   cd backend
 ```
 
-Duplique o arquivo .env.example e renomeie para .env. Substitua as variáveis de acordo com os seus dados
+Duplique o arquivo .env.example e renomeie para .env. Substitua as variáveis de acordo com os seus dados.
 
 -->
 
