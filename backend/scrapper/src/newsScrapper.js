@@ -59,7 +59,7 @@ async function performScraping(website, subject) {
                 link: el.querySelector(website.newsLink).getAttribute('href'),
                 title: el.querySelector(website.newsTitle).textContent,
                 scrape_date: now.toISOString(),
-                expire_date: Math.floor(now.getTime() / 1000) + (7 * 24 * 60 * 60)
+                expire_date: Math.floor(now.getTime() / 1000) + (2 * 24 * 60 * 60)
             });
         });
         return data;
