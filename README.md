@@ -61,6 +61,9 @@ Abra uma nova aba do terminal. Entre no diretório backend do projeto
 ```bash
   cd backend
 ```
+
+Duplique o arquivo .env.example e renomeie para .env. Substitua as variáveis de acordo com os seus dados.
+
 -->
 
 ## Roadmap
