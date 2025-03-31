@@ -1,7 +1,7 @@
 
 # News Aggregator
 
-App que agrega notícias de diferentes websites. Utiliza web scrapping e foi pensado para rodar na estrutura serverless da AWS. Você pode ver acessar o app em funcionamento no link: https://main.d2skzx6ijbdpfa.amplifyapp.com/
+App que agrega notícias de diferentes websites. Utiliza web scrapping e foi pensado para rodar na estrutura serverless da AWS.
 
 ## Stack utilizada
 
